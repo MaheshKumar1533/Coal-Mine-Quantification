@@ -1,0 +1,103 @@
+@import "https://fonts.googleapis.com/css2?family=Staatliches&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap";
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Courier New", Courier, monospace;
+}
+header {
+	width: 100%;
+	background-color: #ffdac7;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+header nav {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+header nav .logo img {
+	width: 5rem;
+	margin-left: 1vw;
+}
+
+header ul {
+	display: flex;
+	width: fit-content;
+	margin-inline: auto;
+}
+header ul li {
+	list-style-type: none;
+	padding: 1rem 2rem;
+	color: #878282;
+	margin: 1rem;
+	border-radius: 10px;
+}
+header ul li:nth-last-child(1) {
+	background-color: #11a66d;
+	color: #fff;
+}
+
+header ul li a {
+	text-decoration: none;
+	color: #2d3445;
+}
+.landing-page {
+	background-image: url("img/background.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100vh;
+	display: flex;
+	gap: 4rem;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.landing-page .title {
+	width: 50%;
+	text-align: center;
+	font-family: Staatliches;
+	font-weight: 400;
+	font-size: 3rem;
+}
+.landing-page .sub-para {
+	width: 60%;
+	text-align: center;
+	color: #828080;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	align-items: center;
+	font-family: "Outfit";
+}
+.landing-page .sub-para button {
+	background-color: #11a66d;
+	color: #fff;
+	padding: 1rem 4rem;
+	border-radius: 100vw;
+	border: none;
+	outline: none;
+	width: fit-content;
+}
+.measuring-carbon-footprint {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+.measuring-carbon-footprint h1 {
+	font-family: Staatliches;
+	font-weight: 400;
+	font-size: 3rem;
+	padding: 3rem 0;
+}
+.measuring-carbon-footprint p {
+	width: 80%;
+	color: #828080;
+}

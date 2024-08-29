@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+$header-background: #FFDAC7;
+$nav-font-color: #878282;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+header{
+    width: 100%;
+    background-color: $header-background;
+    position: fixed;
+    top: 0;
+    left: 0;
+    ul{
+        display: flex;
+        width: fit-content;
+        margin-inline: auto;
+        li{
+            list-style-type: none;
+            padding: 1rem 2rem;
+            color: $nav-font-color;
+            margin: 1rem;
+            border-radius: 10px;
+            &:nth-last-child(1){
+                background-color: #11A66D;
+                color: white;
+            }
+        }
+    }
+}
+
+.landing-page{
+    background-image: url("img/background.png");
+    background-size: cover  ;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    gap: 4rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .title{
+        width: 50%;
+        text-align: center;
+        font-family: Staatliches;
+        font-weight: 400;
+        font-size: 3rem;
+    }
+
+    .sub-para{
+        width: 60%;
+        text-align: center;
+        color: #828080;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        font-family: "Outfit";
+
+        button{
+            background-color: #11A66D;
+            color: #FFFFFF;
+            padding: 1rem 4rem;
+            border-radius: 100vw;
+            border: none;
+            outline: none;
+            width: fit-content;
+        }
+    }
+}
+
+.measuring-carbon-footprint{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    h1{
+        font-family: Staatliches;
+        font-weight: 400;
+        font-size: 3rem;
+        padding: 3rem 0;
+    }
+
+    p{
+        width: 80%;
+        color: #828080;
+    }
+}
+

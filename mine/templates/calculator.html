@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{% static 'css/calculator.min.css' %}">
+    <title>Environmental Impact Calculator</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <!-- <img src="img/logo.png" alt="Ministry of Coal"> -->
+                <ul class="nav-links">
+                    <li><a href="#home"></i>Ministry of Coal</a></li>
+                </ul>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#insights"><i class="fa-solid fa-chart-pie"></i> Insights</a></li>
+                <li><a href="#about"><i class="fa-solid fa-info"></i> About</a></li>
+                <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+                <li class="cta"><a href="#calculator"><i class="fa-solid fa-calculator"></i> Get Started</a></li>
+            </ul>
+            <div class="hamburger">
+
+
+
+            </div>
+        </nav>
+    </header>
+
+    <h1>Environmental Impact Calculator</h1>
+
+    <section id="extraction">
+        <h2>Extraction</h2>
+        <div class="sub-section">
+            <h3>Burning Fossil Fuels</h3>
+            <div class="input-field">
+                <select name="fuel-type" id="fuel-type">
+                    <option value="diesel">Diesel</option>
+                    <option value="gasoline">Gasoline</option>
+                </select>
+                <input type="number" id="fuel-consumed" placeholder="Enter Fuel Consumed">
+
+                <div></div>
+                <div class="result" id="result-burning-fossil-fuels"></div>
+            </div>
+        </div>
+        </div>
+        <div class="sub-section">
+            <h3>Methane Emission during Coal Extraction</h3>
+            <div class="input-field">
+                <label for="methane-emitted">Methane Emitted (m<sup>3</sup>): </label>
+                <input type="number" id="methane-emitted" placeholder="Enter methane emitted">
+
+                <div></div>
+                <div class="result" id="result-methane-emissions"></div>
+            </div>
+        </div>
+        <div class="sub-section">
+            <h3>During Explosions or Blastings</h3>
+            <div class="input-field">
+                <label for="explosives-used">Explosives Used (Tons): </label>
+                <input type="number" id="explosives-used" placeholder="Enter explosives used">
+
+                <label for="emission-factor-explosives">Emission Factor: </label>
+                <input type="number" id="emission-factor-explosives" placeholder="Enter emission factor">
+
+                <div></div>
+                <div class="result" id="result-explosions"></div>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <h3>Electricity Used</h3>
+            <div class="input-field">
+                <label for="energy-used">Energy Used (KW*h): </label>
+                <input type="number" id="energy-used" placeholder="Enter energy used">
+
+                <label for="emission-factor-energy">Emission Factor: </label>
+                <input type="number" id="emission-factor-energy" placeholder="Enter emission factor">
+
+                <div></div>
+                <div class="result" id="result-electricity-used"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="transportation">
+        <h2>Transportation</h2>
+        <div class="input-field">
+            <label for="transport-fuel-consumed">Fuel Consumed (units): </label>
+            <input type="number" id="transport-fuel-consumed" placeholder="Enter fuel consumed">
+            <label for="transport-emission-factor">Emission Factor (units): </label>
+            <input type="number" id="transport-emission-factor" placeholder="Enter emission factor">
+            <div class="result" id="result-transportation"></div>
+        </div>
+    </section>
+    <section style="display: none;" id="result">
+        <div id="total-emissions"></div>
+    </section>
+    <div class="button-container">
+        <button onclick="return calculate()">Calculate</button>
+    </div>
+
+    <script>
+        function calculateBurningFossilFuels() {
+            let fuelConsumed = document.getElementById('fuel-consumed').value;
+            if (fuelConsumed !== "") {
+                fuelConsumed = parseFloat(fuelConsumed);
+                const fuel_type = document.getElementById('fuel-type').value;
+                const emissionFactor = {
+                    "diesel": 2.68,
+                    "gasoline": 0.7,
+                }[fuel_type];
+                const emissions = fuelConsumed * emissionFactor;
+                document.getElementById('result-burning-fossil-fuels').innerText = `Emissions: ${emissions.toFixed(2)} units`;
+                return emissions;
+            }
+            return 0;
+        }
+
+        function calculateMethaneEmissions() {
+            let methaneEmitted = document.getElementById('methane-emitted').value;
+            if (methaneEmitted !== "") {
+                methaneEmitted = parseFloat(methaneEmitted);
+                const gwp = 25; // Global Warming Potential for CO2
+                const emissions = methaneEmitted * gwp;
+                document.getElementById('result-methane-emissions').innerText = `Emissions: ${emissions.toFixed(2)} CO2 equivalents`;
+                return emissions;
+            }
+            return 0;
+        }
+
+        function calculateExplosions() {
+            let explosivesUsed = document.getElementById('explosives-used').value;
+            let emissionFactor = document.getElementById('emission-factor-explosives').value;
+            if (explosivesUsed !== "" && emissionFactor !== "" && emissionFactor) {
+                explosivesUsed = parseFloat(explosivesUsed);
+                emissionFactor = parseFloat(emissionFactor);
+                const emissions = explosivesUsed * emissionFactor;
+                document.getElementById('result-explosions').innerText = `Emissions: ${emissions.toFixed(2)} units`;
+                return emissions;
+            }
+            return 0;
+        }
+
+        function calculateElectricityUsed() {
+            let energyUsed = document.getElementById('energy-used').value;
+            let emissionFactor = document.getElementById('emission-factor-energy').value;
+            console.log(energyUsed)
+            if (energyUsed !== "" && emissionFactor !== "" && emissionFactor) {
+                energyUsed = parseFloat(energyUsed)
+                emissionFactor = parseFloat(emissionFactor);
+                const emissions = energyUsed * emissionFactor;
+                document.getElementById('result-electricity-used').innerText = `Emissions: ${emissions.toFixed(2)} units`;
+                return emissions;
+            }
+            return 0;
+        }
+
+        function calculateTransportation() {
+            let fuelConsumed = document.getElementById('transport-fuel-consumed').value;
+            let emissionFactor = document.getElementById('transport-emission-factor').value;
+            if (fuelConsumed !== "" && emissionFactor !== "" && emissionFactor) {
+                fuelConsumed = parseFloat(fuelConsumed);
+                emissionFactor = parseFloat(emissionFactor);
+                const emissions = fuelConsumed * emissionFactor;
+                document.getElementById('result-transportation').innerText = `Emissions: ${emissions.toFixed(2)} units`;
+                return emissions;
+            }
+            return 0;
+        }
+
+        function calculate() {
+            var total_emissions = calculateBurningFossilFuels() + calculateMethaneEmissions() + calculateExplosions() + calculateElectricityUsed()   + calculateTransportation();
+            document.getElementById('total-emissions').innerText = `Total Emissions: ${total_emissions} Units`;
+            document.getElementById("result").style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

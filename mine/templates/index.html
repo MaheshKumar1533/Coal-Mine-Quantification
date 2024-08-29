@@ -1,0 +1,313 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Staatliches&display=swap');
+
+        .rectangle {
+            height: 100vh;
+            width: 80%;
+            margin-inline: auto;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            background-color: pink;
+            border-radius: 25px;
+            border: 2px solid black;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .up {
+            font-family: Inter, Staatliches;
+            margin: 0;
+            padding: 0;
+            background-color: #F9F1EC;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            padding: 20px;
+            background-color: #FFDAC7;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+        }
+
+        .form-section,
+        .result-section {
+            flex: 1;
+        }
+
+        .form-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            /* 1 part for labels, 2 parts for inputs */
+            gap: 20px;
+            /* Space between label and input */
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-section label {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin: 0;
+            /* Remove default margin */
+        }
+
+        .form-section input[type="number"],
+        .form-section select {
+            width: 100%;
+            /* Full width of grid cell */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input {
+            margin: 5px;
+        }
+
+        .form-section button {
+            grid-column: span 2;
+            /* Span across both columns */
+            padding: 10px;
+            background-color: #00B74A;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .result-section h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .result-section p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .recommended-actions {
+            margin-top: 20px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .recommended-actions h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .recommended-actions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recommended-actions li {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+        }
+
+        .recommended-actions li:last-child {
+            border-bottom: none;
+        }
+
+        .recommended-actions li img {
+            margin-right: 10px;
+        }
+    </style>
+    <title>Carbon Footprint Calculator</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="{% static 'img/logo.png' %}" alt="Ministry of Coal">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#insights"><i class="fa-solid fa-chart-pie"></i> Insights</a></li>
+                <li><a href="#about"><i class="fa-solid fa-info"></i> About</a></li>
+                <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+                <li class="cta"><a href="#calculator"><i class="fa-solid fa-calculator"></i>Get Started</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+    <div class="landing-page">
+        <h1 class="title">Coal Mine Carbon Footprint Measurement Tool</h1>
+        <div class="sub-para">
+            <p>Welcome to our web application designed to help Indian coal mines measure their carbon footprint and
+                explore pathways to carbon neutrality</p>
+            <button>Explore Now</button>
+        </div>
+    </div>
+
+    <div class="measuring-carbon-footprint">
+        <h1>MEASURING CARBON FOOTPRINT</h1>
+        <p>At the heart of our web application lies the ability to accurately measure your coal mine's carbon footprint.
+            By inputting your operational data, our advanced algorithms will provide you with a detailed breakdown of
+            your emissions, enabling you to identify areas for improvement and make informed decisions to reduce your
+            environmental impact</p>
+    </div>
+
+    <div class="up">
+        <div class="container">
+            <div class="form-section">
+                <label>Fuel Consumption:</label>
+                <input type="number" value="10000"> liters
+
+                <label>Methane Emissions:</label>
+                <input type="number" value="500"> <span>m<sup>3</sup></span>
+
+                <label>Explosives Usage:</label>
+                <input type="number" value="2000"> kg
+
+                <label>Electricity Consumption:</label>
+                <input type="number" value="50000"> kWh
+
+                <label>Transportation:</label>
+                <input type="number" value="5000"> liters
+
+                <label>New Constructions:</label>
+                <input type="number" value="20000">
+                <select>
+                    <option value="tons">tons</option>
+                    <option value="kwh">kWh</option>
+                </select>
+
+                <button type="button">Calculate</button>
+            </div>
+            <div class="result-section">
+                <h3>Total Carbon Footprint</h3>
+                <p>Total Emissions (CO<sub>2</sub>):<br>
+                    102,500 kg CO<sub>2</sub> or 102.5 tons CO<sub>2</sub></p>
+
+                <div class="recommended-actions">
+                    <h3>Recommended Actions</h3>
+                    <ul>
+                        <li><img src="check-icon.png" alt="Check Icon"> Adopt Sustainable Practices</li>
+                        <li><img src="check-icon.png" alt="Check Icon"> Implement Energy Efficiency Measures</li>
+                        <li><img src="check-icon.png" alt="Check Icon"> Promote Electric Vehicle Usage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="insights" class="insights">
+        <h2>Carbon Footprint Insights</h2>
+        <div class="insight-cards">
+            <div class="card">
+                <i class="fa-solid fa-lightbulb"></i>
+                <h3>Energy Efficiency</h3>
+                <p>Learn how to optimize your energy consumption and reduce emissions.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-leaf"></i>
+                <h3>Sustainable Practices</h3>
+                <p>Discover eco-friendly mining techniques to minimize environmental impact.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Emission Trends</h3>
+                <p>Track your progress and identify long-term emission reduction strategies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>We are dedicated to helping Indian coal mines measure and reduce their carbon footprint. Our team of experts
+            uses
+            advanced algorithms to provide accurate assessments and tailored solutions for a sustainable future.</p>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h4>About Us</h4>
+                <p>We provide cutting-edge carbon footprint measurement solutions for coal mines, helping you reduce
+                    your
+                    environmental impact and move towards sustainability.</p>
+            </div>
+            <div class="footer-section links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#calculator">Calculator</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-envelope"></i> info@example.com</p>
+                <p><i class="fa-solid fa-phone"></i> +123 456 7890</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/ministryofcoal?igsh=MXdtMXB1Y2tkdHc5bg==" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Coal Mine Carbon Footprint Calculator. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

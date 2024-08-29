@@ -1,0 +1,281 @@
+// Variables
+$primary-color: #052f3d;
+$secondary-color: #28a745;
+$background-color: #f4f4f4;
+$light-gray: #e9ecef;
+$font-family: Arial, sans-serif;
+$line-height: 1.6;
+$padding: 10px;
+$border-width: 2px;
+$border-radius: 5px;
+$input-width: 100%; // Default input width
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+// Global Styles
+body {
+	font-family: $font-family;
+	line-height: $line-height;
+	background-color: $background-color;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	color: $primary-color;
+	margin-left: 20px;
+}
+
+h3 {
+	color: $primary-color;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+p,
+ul {
+	margin-left: 20px;
+}
+
+ul {
+	margin-left: 40px;
+}
+
+// Sections and Borders
+section {
+	margin-top: 2rem;
+	border: $border-width solid darken($secondary-color, 20%);
+	border-radius: $border-radius;
+	margin-inline: auto;
+	padding: 2rem;
+	width: 100%;
+	max-width: 1200px; // Add max-width for larger screens
+	position: relative;
+	background-color: lighten($primary-color, 90%);
+
+	display: grid;
+	grid-template-columns: auto auto;
+	gap: 2%;
+
+	h2 {
+		position: absolute;
+		background: linear-gradient(0deg, #ffffff, $background-color);
+		// border-radius: 10px;
+		// box-shadow: 10px 0 2px 2px #ffffff, 0 0 4px 4px $background-color;
+		top: -1.25rem;
+		left: 1rem;
+		display: block;
+		background-color: white;
+		padding: 0 0.5rem; // Add padding for better visibility
+	}
+
+	.sub-section {
+		background-color: lighten($color: #3e3d43, $amount: 90%);
+		padding: 1rem;
+		border-radius: 10px;
+	}
+
+	.input-field {
+		margin-top: 1rem;
+		display: grid;
+		grid-template-columns: 1fr; // Default to one column
+
+		// Responsive grid layout
+		@media (min-width: 768px) {
+			grid-template-columns: 1fr 4fr; // Two columns on medium and larger screens
+			gap: 1rem; // Add gap between columns
+		}
+
+		select,
+		input {
+			width: $input-width;
+			padding: 10px;
+			margin-bottom: 15px;
+			border: $border-width solid $primary-color;
+			border-radius: $border-radius;
+			box-sizing: border-box;
+		}
+
+		span {
+			margin: 5px;
+			font-size: 1rem;
+		}
+
+		button {
+			background-color: $secondary-color;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: $border-radius;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+
+			&:hover {
+				background-color: darken($secondary-color, 10%);
+			}
+		}
+	}
+}
+
+.formula {
+	background-color: $light-gray;
+	padding: $padding;
+	border-left: $border-width solid $secondary-color;
+	margin-left: 40px;
+	margin-top: 10px;
+	border-radius: $border-radius;
+}
+
+// Input Fields and Results
+.input-field {
+	margin-left: 20px;
+	margin-top: 20px;
+
+	label {
+		display: block;
+		margin-bottom: 5px;
+		font-weight: bold;
+		color: $primary-color;
+	}
+
+	input,
+	select {
+		width: $input-width;
+		padding: 10px;
+		margin-bottom: 15px;
+		border: $border-width solid $primary-color;
+		border-radius: $border-radius;
+		box-sizing: border-box;
+	}
+
+	button {
+		background-color: $secondary-color;
+		color: #fff;
+		padding: 10px 20px;
+		border: none;
+		border-radius: $border-radius;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+
+		&:hover {
+			background-color: darken($secondary-color, 10%);
+		}
+	}
+}
+
+.result {
+	font-weight: bold;
+	color: $primary-color;
+	margin-left: 20px;
+	margin-top: 15px;
+}
+
+// Header and Navigation
+header {
+	background-color: $primary-color;
+	padding: 15px 0;
+
+	nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 20px;
+
+		.logo img {
+			width: 150px;
+		}
+
+		.nav-links {
+			display: flex;
+			gap: 20px;
+
+			li {
+				list-style: none;
+
+				a {
+					color: #fff;
+					text-decoration: none;
+					font-weight: bold;
+
+					&:hover {
+						color: $secondary-color;
+					}
+				}
+
+				&.cta a {
+					background-color: $secondary-color;
+					padding: 8px 16px;
+					border-radius: $border-radius;
+
+					&:hover {
+						background-color: darken($secondary-color, 10%);
+					}
+				}
+			}
+		}
+
+		.hamburger {
+			display: none;
+		}
+	}
+}
+
+// Media Queries for Responsive Design
+@media (max-width: 768px) {
+	.input-field {
+		margin-left: 10px;
+		margin-right: 10px;
+		display: block;
+
+		input,
+		select {
+			width: 100%;
+		}
+	}
+
+	.result {
+		margin-left: 10px;
+	}
+
+	section {
+		margin: 10px;
+		padding: 15px;
+		width: auto; // Remove fixed width on small screens
+	}
+
+	h1 {
+		margin-left: 10px;
+	}
+
+	h2 {
+		margin-left: 0;
+		margin-right: 0;
+		width: calc(100% - 20px);
+		margin: 20px 10px 10px;
+		padding: 10px;
+	}
+
+	nav .nav-links {
+		flex-direction: column;
+		align-items: center;
+
+		li {
+			margin-bottom: 10px;
+		}
+	}
+
+	nav .hamburger {
+		display: block;
+		cursor: pointer;
+	}
+}
+
+@media (max-width: 769px) {
+	section {
+		width: 50%;
+	}
+}

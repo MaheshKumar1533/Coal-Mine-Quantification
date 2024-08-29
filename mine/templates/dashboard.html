@@ -1,0 +1,402 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <title>Coal Mine Carbon Footprint Dashboard</title>
+    {% comment %} <link rel="stylesheet" href=""> {% endcomment %}
+    <style>
+        /* Add your CSS styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F7E9E0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #D6B8A1;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #EAF7F0;
+            border-radius: 8px;
+            padding: 20px;
+            width: 18%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .chart-card {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            padding: 20px;
+            width: 48%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .pie-chart {
+            background-color: #F0F0F0;
+            width: 100%;
+            height: 200px;
+            margin-top: 10px;
+        }
+
+        .footer-data {
+            display: flex;
+            justify-content: space-between;
+        }
+
+
+        .footers {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-box {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .footer-box img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .warning {
+            color: red;
+            font-weight: bold;
+        }
+
+        .carbon-footprint {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .carbon-info {
+            text-align: center;
+            flex: 1;
+        }
+
+        .carbon-info img {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 5px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .footer-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .box {
+            padding: 10px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .real-time-quality {
+            background-color: #fff3e0;
+            border-radius: 5px;
+        }
+
+        .air-quality-index {
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+
+        .aqi-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 5px;
+        }
+
+        .indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+
+        .indicator.red {
+            background-color: red;
+        }
+
+        .indicator.yellow {
+            background-color: yellow;
+        }
+
+        .indicator.green {
+            background-color: green;
+        }
+
+        .pollutant-levels {
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+
+        .warning {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Insights</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Top Cards -->
+        <div class="card-row">
+            <div class="card">Total Emission<br>172 kg CO2</div>
+            <div class="card">Extraction<br>55 kg CO2</div>
+            <div class="card">Transportation<br>49 kg CO2</div>
+            <div class="card">Processing<br>44 kg CO2</div>
+            <div class="card">Equipment<br>24 kg CO2</div>
+        </div>
+
+        <!-- Charts and Emission Data -->
+        <div class="data-section">
+            <div class="chart-card">
+                <h3>Emission Breakdown</h3>
+                <!-- Placeholder for Pie Chart -->
+                <canvas id="myDonutChart" style="width:100%;max-width:600px"></canvas>
+                <div class="carbon-footprint">
+                    <div class="carbon-info">
+                        <p>Carbon footprint calculated</p>
+                        <p><strong>172 kg</strong></p>
+                    </div>
+                    <div class="carbon-info">
+                        <p>Area to be planted</p>
+                        <p><strong>50 Hectors</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3>Realtime Emissions</h3>
+                <!-- Placeholder for Bar Chart -->
+                <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+            </div>
+        </div>
+
+
+        <!-- Bottom Cards -->
+        <div class="footer-container">
+            <!-- Real-Time Air Quality Data -->
+            <div class="footer-card">
+                <!-- First Box: Real-Time Air Quality -->
+                <div class="box real-time-quality">
+                    <h4>Real Time Air Quality</h4>
+                </div>
+
+                <!-- Second Box: Air Quality Index -->
+                <div class="box air-quality-index">
+                    <p>Air Quality Index (AQI): <strong>55</strong></p>
+                    <div class="aqi-indicators">
+                        <span class="indicator red" onclick="updateAirQuality('High')"></span>
+                        <span class="indicator yellow" onclick="updateAirQuality('Moderate')"></span>
+                        <span class="indicator green" onclick="updateAirQuality('Low')"></span>
+                    </div>
+                    <p id="air-quality-status">Moderate</p>
+                </div>
+                <script>
+                    function updateAirQuality(status) {
+                        document.getElementById('air-quality-status').textContent = status;
+                    }
+                </script>
+
+
+                <!-- Third Box: CO2, NOx, SOx Levels -->
+                <div class="box pollutant-levels">
+                    <p>CO2 Level: 350 ppm</p>
+                    <p>NOx Level: 20 ppm</p>
+                    <p>SOx Level: 15 ppm</p>
+                </div>
+            </div>
+
+            <!-- Carbon Emission Monitoring -->
+            <div class="footer-card">
+                <h3>Carbon Emission Monitoring</h3>
+                <p>Total Emission: <strong>1500 kg</strong></p>
+                <p>Emission Limit: <strong>1000 kg</strong></p>
+                <p><span class="warning">High Emission!</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const random_values = [410, 441, 430, 424, 450];
+        const xValues = [];
+        const yValues = [];
+
+        const linechart = new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: yValues
+                }]
+            },
+            options: {
+                legend: { display: false },
+                scales: {
+                    xAxes:[{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Time(IST)' // Label for the x-axis
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            min: 400,   // Minimum value for the y-axis
+                            max: 500, // Maximum value for the y-axis
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Carbon PPM' // Label for the y-axis
+                        }
+                    }]
+                }
+            }
+        });
+        var xvalues = ["Extraction", "Transportation", "Processing", "Combustion"];
+        var yvalues = [55, 49, 44, 24];
+        var barColors = [
+            "#b91d47",
+            "#00aba9",
+            "#2b5797",
+            "#e8c3b9",
+        ];
+
+        new Chart("myDonutChart", {
+            type: "doughnut",
+            data: {
+                labels: xvalues,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yvalues
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Total Emissions"
+                }
+            }
+        });
+
+        function addData() {
+            const now = new Date().toTimeString().slice(0, 9);
+            console.log(now) // Get the current time
+            const value = random_values[Math.floor(Math.random() * random_values.length)]; // Simulate some data (random number)
+
+            xValues.push(now);
+            yValues.push(value);
+
+            if (xValues.length > 10) {
+                xValues.shift();
+            }
+
+            if (yValues.length > 10) {
+                yValues.shift();
+            }
+            console.log();
+
+            linechart.update();
+        }
+
+        setInterval(() => {
+            addData();
+            console.log(yValues);
+        }, 1000);
+    </script>
+</body>
+
+</html>
