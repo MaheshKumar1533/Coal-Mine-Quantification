@@ -6,5 +6,6 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('dashboard',views.livedash,name='livedash'),
     path('calculator',views.calculator,name='calculator'),
+    path('CustomLogin',views.customLogin,name='customLogin')
 
 ]
