@@ -1,40 +1,75 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pathways to Carbon Neutrality</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
-    <link rel="stylesheet" href="{% static 'css/initiatives.css' %}">
-</head>
-<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'css/initiatives.css' %}" />
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="logo">
-                <h1>Ministry of Coal</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
-                <li><a href="{% url 'livedash' %}"><i class="fa-solid fa-chart-pie"></i> Insights</a></li>
-                <li><a href="#about"><i class="fa-solid fa-info"></i> About</a></li>
-                <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-                <li class="cta"><a href="{% url 'calculator' %}"><i class="fa-solid fa-calculator"></i> Get Started</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
+      <nav>
+        <div class="logo">
+          <h1>Ministry of Coal</h1>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a href="#home"><i class="fa-solid fa-house"></i> Home</a>
+          </li>
+          <li>
+            <a href="{% url 'livedash' %}"><i class="fa-solid fa-chart-pie"></i> Insights</a>
+          </li>
+          <li>
+            <a href="#about"><i class="fa-solid fa-info"></i> About</a>
+          </li>
+          <li>
+            <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+          </li>
+          <li class="cta">
+            <a href="{% url 'calculator' %}"><i class="fa-solid fa-calculator"></i> Get Started</a>
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
     </header>
 
     <main>
-        <h1>Pathways to Carbon Neutrality</h1>
-        <div class="solution">
-            <h2>Afforestration</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores odio fuga soluta vel omnis dolorem reiciendis labore tempore provident unde molestias ad, consequuntur delectus obcaecati. Magnam architecto error dicta ex facere fugit sapiente, non minima perferendis, quibusdam mollitia enim ea officia, sunt repellat? Suscipit ea eaque maiores saepe nobis mollitia architecto sed sint, harum vitae veniam repudiandae, expedita nesciunt nam in iure eius eos. Reprehenderit incidunt, ab est suscipit consequuntur quo eligendi excepturi, voluptatibus consectetur, natus at. Necessitatibus sed non nostrum, quisquam pariatur in praesentium. Atque alias quasi at unde itaque delectus accusantium, ducimus tempora ratione, maiores veritatis nam inventore fugiat ut sit illo cupiditate provident magni doloribus esse dicta! Fugiat earum provident unde quis possimus veniam eos ut velit quibusdam molestias dolores quasi nulla eum nihil tenetur soluta nostrum, perferendis, numquam quisquam animi, labore doloribus aspernatur quod ducimus. Voluptatem aliquid cumque veniam placeat sint quae ex itaque illo quam voluptate, est excepturi ad repudiandae quis modi nihil. Dolor aliquid veritatis eveniet est rem quo? Nobis recusandae alias facilis libero nisi ipsam quia porro eaque? Quasi, amet. Commodi quae sint totam, exercitationem dicta eligendi recusandae nihil odio laborum molestiae aspernatur id, libero aliquid temporibus sit quasi et nesciunt sunt ea.</p>
+      <h1>Pathways to Carbon Neutrality</h1>
+      <div class="main-solution">
+        <div class="left">
+          <h2><i class="fa-solid fa-tree"></i> Afforestration</h2>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores odio fuga soluta vel omnis dolorem reiciendis labore tempore provident unde molestias ad, consequuntur delectus obcaecati. Magnam architecto error dicta ex facere fugit sapiente, non minima perferendis, quibusdam mollitia enim ea officia, sunt repellat? Suscipit ea eaque maiores saepe nobis mollitia architecto sed sint, harum vitae veniam repudiandae, expedita nesciunt nam in iure eius eos. Reprehenderit incidunt, ab est suscipit consequuntur quo eligendi excepturi, voluptatibus consectetur, natus at. Necessitatibus sed non nostrum, quisquam pariatur in praesentium.</p>
         </div>
+        <div class="right">
+            <div class="details">
+              <h2 class="trees">Average Carbon Emissions: 200KG</h2>
+              <h2 class="trees">Land required: <span>150</span> Hectors</h2>
+            </div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d144150.66649928878!2d77.50402012719279!3d12.970331917904943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae160e9c4f086f%3A0x6187f6f929878aa7!2sCoal%20India%20Limited!5e1!3m2!1sen!2sin!4v1725033759605!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <h1>Other Alternatives</h1>
+      <div class="solution">
+        <h2><i class="fa-solid fa-gear"></i> Employing Parallel Machinery</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores odio fuga soluta vel omnis dolorem reiciendis labore tempore provident unde molestias ad, consequuntur delectus obcaecati. Magnam architecto error dicta ex facere fugit sapiente, non minima perferendis, quibusdam mollitia enim ea officia, sunt repellat? Suscipit ea eaque maiores saepe nobis mollitia architecto sed sint, harum vitae veniam repudiandae, expedita nesciunt nam in iure eius eos. Reprehenderit incidunt, ab est suscipit consequuntur quo eligendi excepturi, voluptatibus consectetur, natus at. Necessitatibus sed non nostrum, quisquam pariatur in praesentium. Atque alias quasi at unde itaque delectus accusantium, ducimus tempora ratione, maiores veritatis nam inventore fugiat ut sit illo cupiditate provident magni doloribus esse dicta! Fugiat earum provident unde quis possimus veniam eos ut velit quibusdam molestias dolores quasi nulla eum nihil tenetur soluta nostrum, perferendis, numquam quisquam animi, labore doloribus aspernatur quod ducimus. Voluptatem aliquid cumque veniam placeat sint quae ex itaque illo quam voluptate, est excepturi ad repudiandae quis modi nihil. Dolor aliquid veritatis eveniet est rem quo? Nobis recusandae alias facilis libero nisi ipsam quia porro eaque? Quasi, amet. Commodi quae sint totam, exercitationem dicta eligendi recusandae nihil odio laborum molestiae aspernatur id, libero aliquid temporibus sit quasi et nesciunt sunt ea.</p>
+      </div>
+      <div class="solution">
+        <h2><i class="fa-solid fa-bolt"></i> Use of Electric Vehicals</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores odio fuga soluta vel omnis dolorem reiciendis labore tempore provident unde molestias ad, consequuntur delectus obcaecati. Magnam architecto error dicta ex facere fugit sapiente, non minima perferendis, quibusdam mollitia enim ea officia, sunt repellat? Suscipit ea eaque maiores saepe nobis mollitia architecto sed sint, harum vitae veniam repudiandae, expedita nesciunt nam in iure eius eos. Reprehenderit incidunt, ab est suscipit consequuntur quo eligendi excepturi, voluptatibus consectetur, natus at. Necessitatibus sed non nostrum, quisquam pariatur in praesentium. Atque alias quasi at unde itaque delectus accusantium, ducimus tempora ratione, maiores veritatis nam inventore fugiat ut sit illo cupiditate provident magni doloribus esse dicta! Fugiat earum provident unde quis possimus veniam eos ut velit quibusdam molestias dolores quasi nulla eum nihil tenetur soluta nostrum, perferendis, numquam quisquam animi, labore doloribus aspernatur quod ducimus. Voluptatem aliquid cumque veniam placeat sint quae ex itaque illo quam voluptate, est excepturi ad repudiandae quis modi nihil. Dolor aliquid veritatis eveniet est rem quo? Nobis recusandae alias facilis libero nisi ipsam quia porro eaque? Quasi, amet. Commodi quae sint totam, exercitationem dicta eligendi recusandae nihil odio laborum molestiae aspernatur id, libero aliquid temporibus sit quasi et nesciunt sunt ea.</p>
+      </div>
+      <div class="solution">
+        <h2><i class="fa-solid fa-lightbulb"></i> Replacing Conventional lights by LED lights</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores odio fuga soluta vel omnis dolorem reiciendis labore tempore provident unde molestias ad, consequuntur delectus obcaecati. Magnam architecto error dicta ex facere fugit sapiente, non minima perferendis, quibusdam mollitia enim ea officia, sunt repellat? Suscipit ea eaque maiores saepe nobis mollitia architecto sed sint, harum vitae veniam repudiandae, expedita nesciunt nam in iure eius eos. Reprehenderit incidunt, ab est suscipit consequuntur quo eligendi excepturi, voluptatibus consectetur, natus at. Necessitatibus sed non nostrum, quisquam pariatur in praesentium. Atque alias quasi at unde itaque delectus accusantium, ducimus tempora ratione, maiores veritatis nam inventore fugiat ut sit illo cupiditate provident magni doloribus esse dicta! Fugiat earum provident unde quis possimus veniam eos ut velit quibusdam molestias dolores quasi nulla eum nihil tenetur soluta nostrum, perferendis, numquam quisquam animi, labore doloribus aspernatur quod ducimus. Voluptatem aliquid cumque veniam placeat sint quae ex itaque illo quam voluptate, est excepturi ad repudiandae quis modi nihil. Dolor aliquid veritatis eveniet est rem quo? Nobis recusandae alias facilis libero nisi ipsam quia porro eaque? Quasi, amet. Commodi quae sint totam, exercitationem dicta eligendi recusandae nihil odio laborum molestiae aspernatur id, libero aliquid temporibus sit quasi et nesciunt sunt ea.</p>
+      </div>
+      <div class="solution">
+        <h2>Reducing electricity /diesel consumption</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores odio fuga soluta vel omnis dolorem reiciendis labore tempore provident unde molestias ad, consequuntur delectus obcaecati. Magnam architecto error dicta ex facere fugit sapiente, non minima perferendis, quibusdam mollitia enim ea officia, sunt repellat? Suscipit ea eaque maiores saepe nobis mollitia architecto sed sint, harum vitae veniam repudiandae, expedita nesciunt nam in iure eius eos. Reprehenderit incidunt, ab est suscipit consequuntur quo eligendi excepturi, voluptatibus consectetur, natus at. Necessitatibus sed non nostrum, quisquam pariatur in praesentium. Atque alias quasi at unde itaque delectus accusantium, ducimus tempora ratione, maiores veritatis nam inventore fugiat ut sit illo cupiditate provident magni doloribus esse dicta! Fugiat earum provident unde quis possimus veniam eos ut velit quibusdam molestias dolores quasi nulla eum nihil tenetur soluta nostrum, perferendis, numquam quisquam animi, labore doloribus aspernatur quod ducimus. Voluptatem aliquid cumque veniam placeat sint quae ex itaque illo quam voluptate, est excepturi ad repudiandae quis modi nihil. Dolor aliquid veritatis eveniet est rem quo? Nobis recusandae alias facilis libero nisi ipsam quia porro eaque? Quasi, amet. Commodi quae sint totam, exercitationem dicta eligendi recusandae nihil odio laborum molestiae aspernatur id, libero aliquid temporibus sit quasi et nesciunt sunt ea.</p>
     </main>
-</body>
+  </body>
 </html>

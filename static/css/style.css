@@ -15,7 +15,7 @@ body {
 
 header {
   width: 100%;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   background-color: #ffdac7;
@@ -66,6 +66,12 @@ header nav ul li a {
 header nav ul li a:hover {
   color: #11a66d;
 }/*# sourceMappingURL=initiatives.css.map */
+.landing-page{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+}
 .landing-page .title {
 	width: 50%;
 	text-align: center;
@@ -259,7 +265,7 @@ textarea {
 }
 
 footer {
-	background-color: var(--secondary-color);
+	background-color: #F9F1EC;
 	color: var(--text-color);
 	padding: 4rem 2rem 1rem;
 	position: relative;

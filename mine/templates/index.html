@@ -233,23 +233,24 @@
             margin: 10px;
             display: inline;
         }
-        .landing-page {
-            background-image: url("{% static 'img/background.png' %}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+        .background {
+            position: fixed;
+            z-index: -1;
+        }
+
+        .background img{
+            width: 100vw;
             height: 100vh;
-            display: flex;
-            gap: 4rem;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            object-fit: cover;
         }
     </style>
     <title>Carbon Footprint Calculator</title>
 </head>
 
 <body>
+    <div class="background">
+        <img src="{% static 'img/background.png' %}" alt="">
+    </div>
     <header>
         <nav>
             <div class="logo">
