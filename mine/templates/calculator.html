@@ -15,27 +15,23 @@
     <header>
         <nav>
             <div class="logo">
-                <!-- <img src="img/logo.png" alt="Ministry of Coal"> -->
-                <ul class="nav-links">
-                    <li><a href="#home"></i>Ministry of Coal</a></li>
-                </ul>
+                {% comment %} <img src="{% static 'img/logo.png' %}" alt="Ministry of Coal"> {% endcomment %}
+                <h1 style="color: #4CAF50; font-weight:bold;">Emission Calculator</h1>
             </div>
             <ul class="nav-links">
                 <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
                 <li><a href="#insights"><i class="fa-solid fa-chart-pie"></i> Insights</a></li>
                 <li><a href="#about"><i class="fa-solid fa-info"></i> About</a></li>
                 <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-                <li class="cta"><a href="#calculator"><i class="fa-solid fa-calculator"></i> Get Started</a></li>
+                <li class="cta"><a href="{% url 'calculator' %}"><i class="fa-solid fa-calculator"></i> Get Started</a></li>
             </ul>
             <div class="hamburger">
-
-
-
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </nav>
     </header>
-
-    <h1>Environmental Impact Calculator</h1>
 
     <section id="extraction">
         <h2>Extraction</h2>
@@ -43,8 +39,8 @@
             <h3>Burning Fossil Fuels</h3>
             <div class="input-field">
                 <select name="fuel-type" id="fuel-type">
-                    <option value="diesel">Diesel</option>
-                    <option value="gasoline">Gasoline</option>
+                    <option value="diesel">Diesel(L)</option>
+                    <option value="gasoline">Gasoline(L)</option>
                 </select>
                 <input type="number" id="fuel-consumed" placeholder="Enter Fuel Consumed">
 
@@ -103,7 +99,7 @@
         </div>
     </section>
     <section style="display: none;" id="result">
-        <div id="total-emissions"></div>
+        <h1 id="total-emissions"></h1>
     </section>
     <div class="button-container">
         <button onclick="return calculate()">Calculate</button>
