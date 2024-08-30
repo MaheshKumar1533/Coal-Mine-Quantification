@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Initiatives</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            background: linear-gradient(to bottom, #11A66D, #FFDAC7);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            color: black;
+        }
+
+        .main-heading {
+            margin: 10px 0;
+            font-size: 28px;
+            text-align: center;
+            color: white;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #FFDAC7;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            width: 80%;
+            text-align: center;
+            line-height: 1.2;
+            max-height: 80vh;
+            margin: 10px;
+            font-size: small;
+            overflow: hidden;
+        }
+
+        p,
+        b {
+            font-size: small;
+            margin: 4px 0;
+        }
+
+        h4 {
+            margin: 10px 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="{% url 'index' %}" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    <h2 class="main-heading">Initiatives</h2>
+    <div class="container">
+        <h4>1. Efficient Resource Management</h4>
+        <p><b>Resource Optimization:</b> Implement technologies that enhance the efficiency of coal extraction, ensuring that resources are used effectively with minimal waste.</p>
+        <p><b>Waste Reduction:</b> Develop strategies to reduce waste generation during mining operations, including the reuse and recycling of by-products.</p>
+
+        <h4>2. Environmental Management</h4>
+        <p><b>Pollution Control:</b> Invest in technologies and practices that reduce emissions of harmful substances, such as particulate matter and sulfur dioxide, from mining operations.</p>
+        <p><b>Water Management:</b> Implement water recycling and treatment processes to minimize water consumption and prevent contamination of local water sources.</p>
+        <p><b>Land Rehabilitation:</b> After mining operations, restore and rehabilitate the land to its natural state or repurpose it for other sustainable uses, such as agriculture or forestry.</p>
+
+        <h4>3. Energy Efficiency</h4>
+        <p><b>Energy-Efficient Technologies:</b> Adopt energy-efficient machinery and practices to reduce the energy consumption of mining operations.</p>
+        <p><b>Renewable Energy:</b> Integrate renewable energy sources, such as solar or wind, into mining operations to reduce reliance on fossil fuels.</p>
+
+        <h4>4. Sustainable Supply Chain</h4>
+        <p><b>Responsible Sourcing:</b> Ensure that materials and equipment used in mining are sourced responsibly, with consideration for their environmental and social impacts.</p>
+        <p><b>Sustainable Transportation:</b> Optimize transportation logistics to reduce the carbon footprint of coal transportation.</p>
+
+        <h4>5. Community Engagement and Development</h4>
+        <p><b>Local Economic Development:</b> Support local communities through economic development initiatives, ensuring that the benefits of mining are shared with the community.</p>
+        <p><b>Health and Safety Programs:</b> Implement programs to ensure the health and safety of workers and local communities, reducing the risk of accidents and long-term health impacts.</p>
+
+        <h4>6. Education and Awareness</h4>
+        <p><b>Training Programs:</b> Provide education and training for workers on sustainable mining practices and environmental management.</p>
+        <p><b>Community Awareness:</b> Raise awareness within local communities about the importance of sustainable consumption and production patterns.</p>
+
+        <h4>7. Innovation and Research</h4>
+        <p><b>Sustainable Technologies:</b> Invest in research and development of new technologies that can reduce the environmental impact of coal mining.</p>
+        <p><b>Circular Economy Initiatives:</b> Explore ways to create a circular economy within the coal mining sector, such as reusing waste materials in other industries.</p>
+        <br>
+        <p><b>These activities contribute to the sustainable management of coal resources and help align coal mining operations with the broader goals of SDG 12.</b></p>
+    </div>
+</body>
+
+</html>

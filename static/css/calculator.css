@@ -1,0 +1,232 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #052f3d;
+  margin-left: 20px;
+}
+
+h3 {
+  color: #052f3d;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+p,
+ul {
+  margin-left: 20px;
+}
+
+ul {
+  margin-left: 40px;
+}
+
+section {
+  margin-top: 2rem;
+  border: 2px solid #145523;
+  border-radius: 5px;
+  margin-inline: auto;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  background-color: white;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 2%;
+}
+section h2 {
+  position: absolute;
+  background: linear-gradient(0deg, #ffffff, #f4f4f4);
+  top: -1.25rem;
+  left: 1rem;
+  display: block;
+  background-color: white;
+  padding: 0 0.5rem;
+}
+section .sub-section {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+}
+section .input-field {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  section .input-field {
+    grid-template-columns: 1fr 4fr;
+    gap: 1rem;
+  }
+}
+section .input-field select,
+section .input-field input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #052f3d;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+section .input-field span {
+  margin: 5px;
+  font-size: 1rem;
+}
+section .input-field button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+section .input-field button:hover {
+  background-color: #1e7e34;
+}
+
+.formula {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-left: 2px solid #28a745;
+  margin-left: 40px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.input-field {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.input-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #052f3d;
+}
+.input-field input,
+.input-field select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #052f3d;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.input-field button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.input-field button:hover {
+  background-color: #1e7e34;
+}
+
+.result {
+  font-weight: bold;
+  color: #052f3d;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+header {
+  background-color: #ffdac7;
+  padding: 15px 0;
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+header nav .logo img {
+  width: 150px;
+}
+header nav .nav-links {
+  display: flex;
+  gap: 20px;
+}
+header nav .nav-links li {
+  list-style: none;
+}
+header nav .nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+header nav .nav-links li a:hover {
+  color: #28a745;
+}
+header nav .nav-links li.cta a {
+  background-color: #28a745;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+header nav .nav-links li.cta a:hover {
+  background-color: #1e7e34;
+}
+header nav .hamburger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .input-field {
+    margin-left: 10px;
+    margin-right: 10px;
+    display: block;
+  }
+  .input-field input,
+  .input-field select {
+    width: 100%;
+  }
+  .result {
+    margin-left: 10px;
+  }
+  section {
+    margin: 10px;
+    padding: 15px;
+    width: auto;
+  }
+  h1 {
+    margin-left: 10px;
+  }
+  h2 {
+    margin-left: 0;
+    margin-right: 0;
+    width: calc(100% - 20px);
+    margin: 20px 10px 10px;
+    padding: 10px;
+  }
+  nav .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav .nav-links li {
+    margin-bottom: 10px;
+  }
+  nav .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+}
+@media (max-width: 769px) {
+  section {
+    width: 50%;
+  }
+}/*# sourceMappingURL=calculator.css.map */

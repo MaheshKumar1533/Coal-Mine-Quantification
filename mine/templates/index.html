@@ -1,4 +1,3 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
@@ -140,6 +139,112 @@
         .recommended-actions li img {
             margin-right: 10px;
         }
+        .card-container {
+            width: 1000px;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            margin-inline: auto;
+            margin-top: 80px;
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .icon {
+            border-radius: 50px;
+            width: 100px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .card {  
+            color: #333;
+            padding: 550px auto;
+            border-radius: 10px;
+            margin: auto;
+            max-width: 800px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card h2 {
+            font-family: Staatliches;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-family: "Outfit";
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #4CAF50;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .initiatives {
+            background-color: #FFF5EF;
+            border: 1px solid #ddd;
+            padding: 10px 10px 10px 30px;
+            border-radius: 8px;
+            margin: 10px 20px;
+            text-align: left;
+        }
+
+        .initiatives p {
+            font-size: 14px;
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #4CAF50;
+            text-decoration: none;
+            border-radius: 20px;
+            width: 180px;
+            margin: 10px;
+        }
+
+        .link {
+            color: #4CAF50;
+            font-size: 14px;
+            margin: 10px;
+            display: inline;
+        }
+        .landing-page {
+            background-image: url("{% static 'img/background.png' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            gap: 4rem;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
     <title>Carbon Footprint Calculator</title>
 </head>
@@ -148,14 +253,15 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="{% static 'img/logo.png' %}" alt="Ministry of Coal">
+                {% comment %} <img src="{% static 'img/logo.png' %}" alt="Ministry of Coal"> {% endcomment %}
+                <h1>Ministry of Coal</h1>
             </div>
             <ul class="nav-links">
                 <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
                 <li><a href="#insights"><i class="fa-solid fa-chart-pie"></i> Insights</a></li>
                 <li><a href="#about"><i class="fa-solid fa-info"></i> About</a></li>
                 <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-                <li class="cta"><a href="#calculator"><i class="fa-solid fa-calculator"></i>Get Started</a></li>
+                <li class="cta"><a href="{% url 'calculator' %}"><i class="fa-solid fa-calculator"></i> Get Started</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -164,15 +270,16 @@
             </div>
         </nav>
     </header>
+
     <div class="landing-page">
         <h1 class="title">Coal Mine Carbon Footprint Measurement Tool</h1>
         <div class="sub-para">
             <p>Welcome to our web application designed to help Indian coal mines measure their carbon footprint and
                 explore pathways to carbon neutrality</p>
-            <button>Explore Now</button>
+            <a href="{% url 'livedash' %}" style="text-decoration:none;"><button>Explore Now</button></a>
         </div>
     </div>
-
+        {% comment%}
     <div class="measuring-carbon-footprint">
         <h1>MEASURING CARBON FOOTPRINT</h1>
         <p>At the heart of our web application lies the ability to accurately measure your coal mine's carbon footprint.
@@ -181,7 +288,7 @@
             environmental impact</p>
     </div>
 
-    <div class="up">
+     <div class="up">
         <div class="container">
             <div class="form-section">
                 <label>Fuel Consumption:</label>
@@ -216,32 +323,58 @@
                 <div class="recommended-actions">
                     <h3>Recommended Actions</h3>
                     <ul>
-                        <li><img src="check-icon.png" alt="Check Icon"> Adopt Sustainable Practices</li>
-                        <li><img src="check-icon.png" alt="Check Icon"> Implement Energy Efficiency Measures</li>
-                        <li><img src="check-icon.png" alt="Check Icon"> Promote Electric Vehicle Usage</li>
+                        <li><img src="{% static 'check-icon.png' %}" alt="Check Icon"> Adopt Sustainable Practices</li>
+                        <li><img src="{% static 'check-icon.png' %}" alt="Check Icon"> Implement Energy Efficiency Measures</li>
+                        <li><img src="{% static 'check-icon.png' %}" alt="Check Icon"> Promote Electric Vehicle Usage</li>
                     </ul>
                 </div>
             </div>
+        </div>
+    </div> {% endcomment %}
+
+    <div class="card-container" id="cardContainer">
+        <div class="card">
+            <img src="{% static 'img/sustainability infinity.jpg' %}" alt="SDG Icon" class="icon">
+            <h1>ALIGNING WITH SDG 12</h1>
+        </div>
+        <h2>Goal 12: Responsible Consumption and Production</h2>
+        <p>Our commitment to reducing carbon emissions from coal mining activities is directly aligned with the United Nations' Sustainable Development Goal 12 (SDG 12). This goal focuses on ensuring sustainable consumption and production patterns by reducing waste, managing resources efficiently, and adopting environmentally-friendly practices.</p>
+        
+        <h3>Key Initiatives Aligned with SDG 12</h3>
+        <div class="initiatives">
+            <p><strong>Reducing Carbon Footprint:</strong> Implementing advanced technologies to minimize emissions in extraction, transportation, and processing activities.</p>
+            <p><strong>Monitoring and Transparency:</strong> Providing real-time data on air quality and carbon emissions to promote transparency and informed decision-making.</p>
+            <p><strong>Promoting Carbon Neutrality:</strong> Offering solutions for carbon offset through afforestation and adoption of renewable energy sources, such as solar and wind power.</p>
+            <p><strong>Education and Awareness:</strong> Informing stakeholders about the importance of sustainable practices and the steps they can take to contribute to carbon neutrality.</p>
+        </div>
+        
+        <p>By integrating these sustainable practices, we not only contribute to global environmental goals but also ensure a healthier and more resilient ecosystem for future generations.</p>
+        
+        <div class="buttons">
+            <a href="#" class="button">Explore Now</a>
+            <br>
+            <a href="https://sdgs.un.org/goals/goal12" target="_blank" class="link">Learn More About SDG 12</a>
+            <a href="{% url 'initiatives' %}" class="link">Explore The Initiatives</a>
         </div>
     </div>
     <section id="insights" class="insights">
         <h2>Carbon Footprint Insights</h2>
         <div class="insight-cards">
-            <div class="card">
-                <i class="fa-solid fa-lightbulb"></i>
-                <h3>Energy Efficiency</h3>
-                <p>Learn how to optimize your energy consumption and reduce emissions.</p>
-            </div>
-            <div class="card">
+         <a class="card" href="{% url 'livedash' %}" style="text-decoration:none;">
+                <i class="fa-solid fa-compass"></i>
+                <h3>Carbon Compass</h3>
+                <p>Quantification of carbon emissions in Mining Activities</p>
+         </a>
+         <a class="card" href="{% url 'initiatives' %}" style="text-decoration:none;">
                 <i class="fa-solid fa-leaf"></i>
-                <h3>Sustainable Practices</h3>
-                <p>Discover eco-friendly mining techniques to minimize environmental impact.</p>
-            </div>
-            <div class="card">
+                <h3>Carbon Neutrality</h3>
+                <p>Exploring various Path ways to Carbon Neutrality</p>
+         </a>
+            <a class="card" href="" style="text-decoration:none;">
                 <i class="fa-solid fa-chart-line"></i>
-                <h3>Emission Trends</h3>
-                <p>Track your progress and identify long-term emission reduction strategies.</p>
-            </div>
+                <h3>Sink Gap</h3>
+                <p>Gap Analysis of Carbon Emissions And Sinks</p>
+            </a>
         </div>
     </section>
 
@@ -250,25 +383,6 @@
         <p>We are dedicated to helping Indian coal mines measure and reduce their carbon footprint. Our team of experts
             uses
             advanced algorithms to provide accurate assessments and tailored solutions for a sustainable future.</p>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <form id="contactForm">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-            <button type="submit" class="submit-button">Send Message</button>
-        </form>
     </section>
 
     <footer>
@@ -308,6 +422,17 @@
     </footer>
 
     <script src="script.js"></script>
+    {% comment %} <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const exploreButton = document.querySelector('.sub-para button');
+            const cardContainer = document.getElementById('cardContainer');
+            const closeCardButton = document.getElementById('closeCard');
+
+            exploreButton.addEventListener('click', () => {
+                cardContainer.style.display = 'flex';
+            });
+        });
+    </script> {% endcomment %}
 </body>
 
 </html>
