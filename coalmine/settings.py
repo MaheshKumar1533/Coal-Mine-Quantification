@@ -71,6 +71,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'coalmine.wsgi.application'
 
 AUTH_USER_MODEL = 'mine.mineDetail'
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -124,6 +125,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGIN_URL = '/CustomLogin/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

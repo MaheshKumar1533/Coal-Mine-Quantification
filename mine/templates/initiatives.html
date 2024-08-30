@@ -1,119 +1,221 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Initiatives</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <title>Pathways to Carbon Neutrality</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
     <style>
         body {
-            background: linear-gradient(to bottom, #11A66D, #FFDAC7);
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
-            width: 100vw;
             overflow: hidden;
-            color: black;
+            background: linear-gradient(to bottom, #11A66D, #FFDAC7);
         }
-
-        .main-heading {
-            margin: 10px 0;
-            font-size: 28px;
-            text-align: center;
-            color: white;
-        }
-
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
+        
+        .maincontainer {
             background-color: white;
-            color: black;
-            border: none;
-            border-radius: 50%;
-            padding: 10px;
-            text-align: center;
+            border-radius: 8px;
+            width: 80vw;
+            height: 76vh;
+            justify-content: center;
+            margin: 100px auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            font-size: 20px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .back-button:hover {
-            background-color: #FFDAC7;
         }
 
         .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 1000px;
-            width: 80%;
-            text-align: center;
-            line-height: 1.2;
-            max-height: 80vh;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            justify-content: center;
+            padding: 30px 30px 0px 30px;
             margin: 10px;
-            font-size: small;
+            height: 30vh;
+            border-radius: 8px;
             overflow: hidden;
         }
 
-        p,
-        b {
-            font-size: small;
-            margin: 4px 0;
+        .sub-section {
+            background-color: #fddbc9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, grid-row-end 0.3s ease-out;
+            max-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
-        h4 {
-            margin: 10px 0 5px;
+        .sub-section h3 {
+            margin: 0;
+            color: black;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .sub-section p {
+            color: black;
+            margin-top: 18px;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #11A66D;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .icon {
+            display: block;
+            margin: 0 auto 16px;
+            color: #11A66D;
+            font-size: 2.25rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+            
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 8px;
+            min-height: 60vh;
+            min-width: 70vw;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        p{
+            font-size: 2rem;
         }
     </style>
 </head>
-
 <body>
-    <a href="{% url 'index' %}" class="back-button">
-        <i class="fas fa-arrow-left"></i>
-    </a>
-    <h2 class="main-heading">Initiatives</h2>
-    <div class="container">
-        <h4>1. Efficient Resource Management</h4>
-        <p><b>Resource Optimization:</b> Implement technologies that enhance the efficiency of coal extraction, ensuring that resources are used effectively with minimal waste.</p>
-        <p><b>Waste Reduction:</b> Develop strategies to reduce waste generation during mining operations, including the reuse and recycling of by-products.</p>
 
-        <h4>2. Environmental Management</h4>
-        <p><b>Pollution Control:</b> Invest in technologies and practices that reduce emissions of harmful substances, such as particulate matter and sulfur dioxide, from mining operations.</p>
-        <p><b>Water Management:</b> Implement water recycling and treatment processes to minimize water consumption and prevent contamination of local water sources.</p>
-        <p><b>Land Rehabilitation:</b> After mining operations, restore and rehabilitate the land to its natural state or repurpose it for other sustainable uses, such as agriculture or forestry.</p>
+    <div class="maincontainer">
+        <div class="container">
+            <div class="sub-section" data-info="Electric vehicles (EVs) are used across various sectors, including personal transportation, commercial and fleet operations, public transportation, and specialized applications. They are popular in personal use for their environmental benefits, lower costs, and convenience, especially in urban areas. EVs are also being adopted in commercial fleets for delivery, ride-sharing, and corporate use due to cost savings and sustainability goals. Public transportation systems like buses and shuttles are transitioning to electric to reduce emissions. Specialized vehicles, such as emergency services, agriculture, and construction equipment, are also increasingly electric. EVs contribute to environmental goals by reducing greenhouse gas emissions and integrating with renewable energy systems. The growth of charging infrastructure and policy support is driving further adoption of EVs, making them a crucial part of a sustainable transportation future.">
+                <i class="fas fa-car icon"></i>
+                <h3>Electric Vehicles (EVs)</h3>
+                <p></p>
+            </div>
+            <div class="sub-section" data-info="Methane capture systems are technologies designed to capture and utilize methane gas, a potent greenhouse gas, from sources like landfills, agriculture, and the oil and gas industry. Methane has a much higher global warming potential than carbon dioxide, making its capture and management crucial for mitigating climate change.
 
-        <h4>3. Energy Efficiency</h4>
-        <p><b>Energy-Efficient Technologies:</b> Adopt energy-efficient machinery and practices to reduce the energy consumption of mining operations.</p>
-        <p><b>Renewable Energy:</b> Integrate renewable energy sources, such as solar or wind, into mining operations to reduce reliance on fossil fuels.</p>
-
-        <h4>4. Sustainable Supply Chain</h4>
-        <p><b>Responsible Sourcing:</b> Ensure that materials and equipment used in mining are sourced responsibly, with consideration for their environmental and social impacts.</p>
-        <p><b>Sustainable Transportation:</b> Optimize transportation logistics to reduce the carbon footprint of coal transportation.</p>
-
-        <h4>5. Community Engagement and Development</h4>
-        <p><b>Local Economic Development:</b> Support local communities through economic development initiatives, ensuring that the benefits of mining are shared with the community.</p>
-        <p><b>Health and Safety Programs:</b> Implement programs to ensure the health and safety of workers and local communities, reducing the risk of accidents and long-term health impacts.</p>
-
-        <h4>6. Education and Awareness</h4>
-        <p><b>Training Programs:</b> Provide education and training for workers on sustainable mining practices and environmental management.</p>
-        <p><b>Community Awareness:</b> Raise awareness within local communities about the importance of sustainable consumption and production patterns.</p>
-
-        <h4>7. Innovation and Research</h4>
-        <p><b>Sustainable Technologies:</b> Invest in research and development of new technologies that can reduce the environmental impact of coal mining.</p>
-        <p><b>Circular Economy Initiatives:</b> Explore ways to create a circular economy within the coal mining sector, such as reusing waste materials in other industries.</p>
-        <br>
-        <p><b>These activities contribute to the sustainable management of coal resources and help align coal mining operations with the broader goals of SDG 12.</b></p>
+                    These systems work by collecting methane emissions that would otherwise escape into the atmosphere and converting them into useful energy, such as electricity or heat. By doing so, methane capture systems help reduce greenhouse gas emissions, improve air quality, and provide an additional source of renewable energy. They play a vital role in efforts to achieve carbon neutrality and reduce the environmental impact of human activities.">
+                <i class="fas fa-gas-pump icon"></i>
+                <h3>Methane Capture Systems</h3>
+                
+            </div>
+            <div class="sub-section" data-info="Renewable energy sources are sustainable and naturally replenished resources, such as solar, wind, hydro, biomass, geothermal, tidal, and wave energy. These sources provide environmentally friendly alternatives to fossil fuels, producing little to no greenhouse gas emissions and helping combat climate change. Renewable energy is also inexhaustible, promoting energy security and reducing dependence on imported fuels. While initial installation costs can be high and some sources are intermittent or geographically limited, renewable energy systems have low operating costs and offer long-term economic and environmental benefits. They are essential for a sustainable future and transitioning to a cleaner, greener energy economy.">
+                <i class="fas fa-solar-panel icon"></i>
+                <h3>Renewable Energy Sources</h3>
+                <p>
+                </p>
+            </div>
+            <div class="sub-section" data-info="Using tree plantations to offset emissions by absorbing CO₂. The app can calculate the required land area based on carbon sequestration rates.">
+                <i class="fas fa-tree icon"></i>
+                <h3>Calculating Land for Tree Plantation</h3>
+                <p>Using tree plantations to offset emissions by absorbing CO₂. The app can calculate the required land area based on carbon sequestration rates.</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="sub-section" data-info="Costs for afforestation projects include land acquisition, planting, and ongoing maintenance, essential for the long-term success of the offset programs.">
+                <i class="fas fa-hand-holding-usd icon"></i>
+                <h3>Implementation and Maintenance Costs</h3>
+                <p>Costs for afforestation projects include land acquisition, planting, and ongoing maintenance, essential for the long-term success of the offset programs.</p>
+            </div>
+            <div class="sub-section" data-info="Bioenergy, geothermal energy, and small-scale hydropower can be leveraged to diversify energy sources and reduce emissions.">
+                <i class="fas fa-leaf icon"></i>
+                <h3>Exploring Alternative Energy Sources</h3>
+                <p>Bioenergy, geothermal energy, and small-scale hydropower can be leveraged to diversify energy sources and reduce emissions.</p>
+            </div>
+            <div class="sub-section" data-info="Implementing energy-efficient equipment and optimizing mining processes can reduce energy consumption and lower carbon footprints.">
+                <i class="fas fa-bolt icon"></i>
+                <h3>Reducing Direct Electricity Consumption</h3>
+                <p>Implementing energy-efficient equipment and optimizing mining processes can reduce energy consumption and lower carbon footprints.</p>
+            </div>
+            <div class="sub-section" data-info="Filters such as carbon capture and storage (CCS) and direct air capture (DAC) remove CO₂ directly from emissions or the atmosphere, reducing the overall carbon footprint.">
+                <i class="fas fa-filter icon"></i>
+                <h3>Filters for Carbon Neutrality</h3>
+                <p>Filters such as carbon capture and storage (CCS) and direct air capture (DAC) remove CO₂ directly from emissions or the atmosphere, reducing the overall carbon footprint.</p>
+            </div>
+        </div>
     </div>
-</body>
 
+    <footer>
+        © 2024 Pathways to Carbon Neutrality - All Rights Reserved
+    </footer>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <script>
+
+        const modal = document.getElementById('myModal');
+        const closeBtn = document.querySelector('.close');
+        const modalText = document.getElementById('modal-text');
+
+        const subSections = document.querySelectorAll('.sub-section');
+
+        subSections.forEach(section => {
+            section.addEventListener('click', () => {
+                modalText.textContent = section.getAttribute('data-info');
+                modal.style.display = 'block'; // Show the modal
+            });
+        });
+
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
 </html>

@@ -218,10 +218,9 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Insights</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'initiatives' %}">Insights</a></li>
+            <li><a href="#about">About</a></li>
         </ul>
     </nav>
 
@@ -279,6 +278,7 @@
                         <span class="indicator green" onclick="updateAirQuality('Low')"></span>
                     </div>
                     <p id="air-quality-status">Moderate</p>
+                    <img src="{% static 'img/aqi.jpg' %}" alt="" width="200px">
                 </div>
                 <script>
                     function updateAirQuality(status) {

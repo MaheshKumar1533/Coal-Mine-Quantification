@@ -19,8 +19,8 @@
                 <h1 style="color: #4CAF50; font-weight:bold;">Emission Calculator</h1>
             </div>
             <ul class="nav-links">
-                <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
-                <li><a href="#insights"><i class="fa-solid fa-chart-pie"></i> Insights</a></li>
+                <li><a href="{% url 'index' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="{% url 'livedash' %}"><i class="fa-solid fa-chart-pie"></i> Insights</a></li>
                 <li><a href="#about"><i class="fa-solid fa-info"></i> About</a></li>
                 <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
                 <li class="cta"><a href="{% url 'calculator' %}"><i class="fa-solid fa-calculator"></i> Get Started</a></li>
@@ -128,7 +128,7 @@
                 methaneEmitted = parseFloat(methaneEmitted);
                 const gwp = 25; // Global Warming Potential for CO2
                 const emissions = methaneEmitted * gwp;
-                document.getElementById('result-methane-emissions').innerText = `Emissions: ${emissions.toFixed(2)} CO2 equivalents`;
+                document.getElementById('result-methane-emissions').innerText = `Emissions: ${emissions.toFixed(2)} KGs`;
                 return emissions;
             }
             return 0;
@@ -141,7 +141,7 @@
                 explosivesUsed = parseFloat(explosivesUsed);
                 emissionFactor = parseFloat(emissionFactor);
                 const emissions = explosivesUsed * emissionFactor;
-                document.getElementById('result-explosions').innerText = `Emissions: ${emissions.toFixed(2)} units`;
+                document.getElementById('result-explosions').innerText = `Emissions: ${emissions.toFixed(2)} KGs`;
                 return emissions;
             }
             return 0;
@@ -155,7 +155,7 @@
                 energyUsed = parseFloat(energyUsed)
                 emissionFactor = parseFloat(emissionFactor);
                 const emissions = energyUsed * emissionFactor;
-                document.getElementById('result-electricity-used').innerText = `Emissions: ${emissions.toFixed(2)} units`;
+                document.getElementById('result-electricity-used').innerText = `Emissions: ${emissions.toFixed(2)} KGs`;
                 return emissions;
             }
             return 0;
@@ -168,7 +168,7 @@
                 fuelConsumed = parseFloat(fuelConsumed);
                 emissionFactor = parseFloat(emissionFactor);
                 const emissions = fuelConsumed * emissionFactor;
-                document.getElementById('result-transportation').innerText = `Emissions: ${emissions.toFixed(2)} units`;
+                document.getElementById('result-transportation').innerText = `Emissions: ${emissions.toFixed(2)} KGs`;
                 return emissions;
             }
             return 0;
@@ -176,7 +176,7 @@
 
         function calculate() {
             var total_emissions = calculateBurningFossilFuels() + calculateMethaneEmissions() + calculateExplosions() + calculateElectricityUsed()   + calculateTransportation();
-            document.getElementById('total-emissions').innerText = `Total Emissions: ${total_emissions} Units`;
+            document.getElementById('total-emissions').innerText = `Total Emissions: ${total_emissions} KGs`;
             document.getElementById("result").style.display = 'block';
         }
     </script>

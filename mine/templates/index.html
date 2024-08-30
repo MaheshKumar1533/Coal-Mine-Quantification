@@ -258,7 +258,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
-                <li><a href="#insights"><i class="fa-solid fa-chart-pie"></i> Insights</a></li>
+                <li><a href="{% url 'livedash' %}"><i class="fa-solid fa-chart-pie"></i> Insights</a></li>
                 <li><a href="#about"><i class="fa-solid fa-info"></i> About</a></li>
                 <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
                 <li class="cta"><a href="{% url 'calculator' %}"><i class="fa-solid fa-calculator"></i> Get Started</a></li>
@@ -351,8 +351,6 @@
         <p>By integrating these sustainable practices, we not only contribute to global environmental goals but also ensure a healthier and more resilient ecosystem for future generations.</p>
         
         <div class="buttons">
-            <a href="#" class="button">Explore Now</a>
-            <br>
             <a href="https://sdgs.un.org/goals/goal12" target="_blank" class="link">Learn More About SDG 12</a>
             <a href="{% url 'initiatives' %}" class="link">Explore The Initiatives</a>
         </div>
@@ -361,20 +359,20 @@
         <h2>Carbon Footprint Insights</h2>
         <div class="insight-cards">
          <a class="card" href="{% url 'livedash' %}" style="text-decoration:none;">
-                <i class="fa-solid fa-compass"></i>
-                <h3>Carbon Compass</h3>
-                <p>Quantification of carbon emissions in Mining Activities</p>
+            <i class="fa-solid fa-compass"></i>
+            <h3>Carbon Compass</h3>
+            <p>Quantification of carbon emissions in Mining Activities</p>
          </a>
          <a class="card" href="{% url 'initiatives' %}" style="text-decoration:none;">
-                <i class="fa-solid fa-leaf"></i>
-                <h3>Carbon Neutrality</h3>
-                <p>Exploring various Path ways to Carbon Neutrality</p>
+            <i class="fa-solid fa-leaf"></i>
+            <h3>Carbon Neutrality</h3>
+            <p>Exploring various Path ways to Carbon Neutrality</p>
          </a>
-            <a class="card" href="" style="text-decoration:none;">
-                <i class="fa-solid fa-chart-line"></i>
-                <h3>Sink Gap</h3>
-                <p>Gap Analysis of Carbon Emissions And Sinks</p>
-            </a>
+        <a class="card" href="" style="text-decoration:none;">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>Sink Gap</h3>
+            <p>Gap Analysis of Carbon Emissions And Sinks</p>
+        </a>
         </div>
     </section>
 

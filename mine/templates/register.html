@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .register-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Register</h2>
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+
+            <h3>Mine Details</h3>
+
+            <div class="form-group">
+                <label for="coal_type">Coal Type:</label>
+                <select id="coal_type" name="coal_type">
+                    <option value="UnderGround">UnderGround</option>
+                    <option value="OpenCast">OpenCast</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="latitude">Latitude:</label>
+                <input type="number" step="any" id="latitude" name="latitude" required>
+            </div>
+
+            <div class="form-group">
+                <label for="longitude">Longitude:</label>
+                <input type="number" step="any" id="longitude" name="longitude" required>
+            </div>
+
+            <div class="form-group">
+                <label for="area">Area (sq km):</label>
+                <input type="number" step="any" id="area" name="area" required>
+            </div>
+
+            <div class="form-group">
+                <label for="green_area">Green Area (sq km):</label>
+                <input type="number" step="any" id="green_area" name="green_area" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mine_area">Mine Area (sq km):</label>
+                <input type="number" step="any" id="mine_area" name="mine_area" required>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="bare_land" name="bare_land"> Bare Land</label>
+            </div>
+
+            <h3>Fuel Type</h3>
+
+            <div class="form-group">
+                <label for="transport">Transport Fuel:</label>
+                <select id="transport" name="transport">
+                    <option value="Diesel">Diesel</option>
+                    <option value="Gasoline">Gasoline</option>
+                    <option value="naturalGas">Natural Gas</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="toolUsage">Tool Usage Fuel:</label>
+                <select id="toolUsage" name="toolUsage">
+                    <option value="Diesel">Diesel</option>
+                    <option value="Gasoline">Gasoline</option>
+                    <option value="naturalGas">Natural Gas</option>
+                </select>
+            </div>
+
+            <h3>Explosion Details</h3>
+
+            <div class="form-group">
+                <label for="explosiveType">Explosive Type:</label>
+                <input type="text" id="explosiveType" name="explosiveType" required>
+            </div>
+
+            <div class="form-group">
+                <label for="emissionFactor">Emission Factor:</label>
+                <input type="number" step="any" id="emissionFactor" name="emissionFactor" required>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+
+        {% if error_message %}
+            <div class="error-message">
+                {{ error_message }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
