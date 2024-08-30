@@ -1,17 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", Courier, monospace;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   line-height: 1.6;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
+  color: #333;
+  background-color: #fcf5ea;
 }
 
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #ffdac7;
+  padding: 1rem 0;
+  width: 100%;
+  z-index: 1000;
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+header nav ul {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+header nav ul li {
+  list-style-type: none;
+  color: #878282;
+  margin: 1rem;
+  border-radius: 10px;
+}
+header nav ul li:nth-last-child(1) {
+  background-color: #11a66d;
+  color: #fff;
+  background-color: #11a66d;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+header nav ul li:nth-last-child(1):hover {
+  background-color: #0d8d5a;
+}
+header nav ul li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+header nav ul li a:hover {
+  color: #11a66d;
+}
 h1 {
   color: #052f3d;
   margin-left: 20px;
@@ -144,47 +199,6 @@ section .input-field button:hover {
   margin-left: 20px;
   margin-top: 15px;
 }
-
-header {
-  background-color: #ffdac7;
-  padding: 15px 0;
-}
-header nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
-header nav .logo img {
-  width: 150px;
-}
-header nav .nav-links {
-  display: flex;
-  gap: 20px;
-}
-header nav .nav-links li {
-  list-style: none;
-}
-header nav .nav-links li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-header nav .nav-links li a:hover {
-  color: #28a745;
-}
-header nav .nav-links li.cta a {
-  background-color: #28a745;
-  padding: 8px 16px;
-  border-radius: 5px;
-}
-header nav .nav-links li.cta a:hover {
-  background-color: #1e7e34;
-}
-header nav .hamburger {
-  display: none;
-}
-
 @media (max-width: 768px) {
   .input-field {
     margin-left: 10px;
