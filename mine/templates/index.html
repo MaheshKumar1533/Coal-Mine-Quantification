@@ -259,11 +259,21 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
+                {% if request.user.is_superuser %}
+                <li><a href="{% url 'admindash' %}"><i class="fa-solid fa-chart-pie"></i>Monitor</a></li>
+                {% else %}
                 <li><a href="{% url 'livedash' %}"><i class="fa-solid fa-chart-pie"></i> Insights</a></li>
+                {% endif %}
                 <li><a href="#about"><i class="fa-solid fa-info"></i> About</a></li>
                 <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-                <li class="cta"><a href="{% url 'calculator' %}"><i class="fa-solid fa-calculator"></i> Get Started</a></li>
+                <li class="cta"><a href="{% url 'calculator' %}"><i class="fa-solid fa-calculator"></i>Emission Calculator</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i></a></li>
+                {% else %}
+                <li><a href="{% url 'customLogin' %}"><i class="fa-solid fa-user"></i></a></li>
+                {% endif %}
             </ul>
+            
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -334,10 +344,12 @@
     </div> {% endcomment %}
 
     <div class="card-container" id="cardContainer">
+        <a href="{% url 'livedash' %}" style="text-decoration:none;">
         <div class="card">
             <img src="{% static 'img/sustainability infinity.jpg' %}" alt="SDG Icon" class="icon">
             <h1>ALIGNING WITH SDG 12</h1>
         </div>
+        </a>
         <h2>Goal 12: Responsible Consumption and Production</h2>
         <p>Our commitment to reducing carbon emissions from coal mining activities is directly aligned with the United Nations' Sustainable Development Goal 12 (SDG 12). This goal focuses on ensuring sustainable consumption and production patterns by reducing waste, managing resources efficiently, and adopting environmentally-friendly practices.</p>
         

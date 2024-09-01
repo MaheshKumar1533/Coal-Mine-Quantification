@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="{% url 'css/admin.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}" />
     <title>Admin</title>
   </head>
 
@@ -81,12 +81,14 @@
         </tr>
       </thead>
       <tbody>
+        {% for mine in details %}
         <tr>
-            <td>Mine A</td>
-            <td>Andhra Pradesh</td>
-            <td>150,000 tons CO2</td>
+            <td>{{ mine.name }}</td>
+            <td>{{ mine.state }}</td>
+            <td>{{ mine.emission }} tons CO2</td>
         </tr>
-        <tr>
+        {% endfor %}
+        {% comment %} <tr>
             <td>Mine B</td>
             <td>Andhra Pradesh</td>
             <td>200,000 tons CO2</td>
@@ -100,7 +102,7 @@
             <td>Mine D</td>
             <td>Andhra Pradesh</td>
             <td>100,000 tons CO2</td>
-        </tr>
+        </tr> {% endcomment %}
       </tbody>
     </table>
   </body>

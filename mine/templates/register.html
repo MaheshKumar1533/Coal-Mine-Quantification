@@ -4,89 +4,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Register </title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
         }
 
         .register-container {
-            background-color: #ffffff;
+            background-color: #fff;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 600px;
+            max-width: 400px;
         }
 
         h2 {
             text-align: center;
+            color: #333;
             margin-bottom: 20px;
-            color: #333333;
         }
 
         .form-group {
             margin-bottom: 15px;
         }
 
-        label {
+        .form-group label {
             display: block;
-            margin-bottom: 5px;
+            color: #555;
             font-weight: bold;
+            margin-bottom: 5px;
         }
 
-        input[type="text"],
-        input[type="password"],
-        input[type="number"],
-        select {
+        .form-group input {
             width: 100%;
             padding: 10px;
-            border: 1px solid #cccccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
         }
 
-        input[type="checkbox"] {
-            margin-right: 10px;
+        .form-group input:focus {
+            border-color: #007bff;
+            outline: none;
         }
 
-        button[type="submit"] {
+        button {
             width: 100%;
             padding: 10px;
-            background-color: #4CAF50;
-            color: white;
+            background-color: #007bff;
+            color: #fff;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        button[type="submit"]:hover {
-            background-color: #45a049;
+        button:hover {
+            background-color: #0056b3;
         }
 
         .error-message {
             color: red;
-            text-align: center;
+            font-size: 14px;
             margin-top: 10px;
+            text-align: center;
         }
+        .background {
+            position: fixed;
+            z-index: -1;
+        }
+
+        .background img{
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
     </style>
 </head>
 <body>
+    <div class="background">
+        <img src="{% static 'img/background.png' %}" alt="">
+    </div>
     <div class="register-container">
         <h2>Register</h2>
         <form method="post">
             {% csrf_token %}
-            
+            <div class="form-group">
+                <label for="firstname">Minename:</label>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
+
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
             </div>
 
             <div class="form-group">
@@ -99,78 +123,7 @@
                 <input type="password" id="confirm_password" name="confirm_password" required>
             </div>
 
-            <h3>Mine Details</h3>
-
-            <div class="form-group">
-                <label for="coal_type">Coal Type:</label>
-                <select id="coal_type" name="coal_type">
-                    <option value="UnderGround">UnderGround</option>
-                    <option value="OpenCast">OpenCast</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="latitude">Latitude:</label>
-                <input type="number" step="any" id="latitude" name="latitude" required>
-            </div>
-
-            <div class="form-group">
-                <label for="longitude">Longitude:</label>
-                <input type="number" step="any" id="longitude" name="longitude" required>
-            </div>
-
-            <div class="form-group">
-                <label for="area">Area (sq km):</label>
-                <input type="number" step="any" id="area" name="area" required>
-            </div>
-
-            <div class="form-group">
-                <label for="green_area">Green Area (sq km):</label>
-                <input type="number" step="any" id="green_area" name="green_area" required>
-            </div>
-
-            <div class="form-group">
-                <label for="mine_area">Mine Area (sq km):</label>
-                <input type="number" step="any" id="mine_area" name="mine_area" required>
-            </div>
-
-            <div class="form-group">
-                <label><input type="checkbox" id="bare_land" name="bare_land"> Bare Land</label>
-            </div>
-
-            <h3>Fuel Type</h3>
-
-            <div class="form-group">
-                <label for="transport">Transport Fuel:</label>
-                <select id="transport" name="transport">
-                    <option value="Diesel">Diesel</option>
-                    <option value="Gasoline">Gasoline</option>
-                    <option value="naturalGas">Natural Gas</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="toolUsage">Tool Usage Fuel:</label>
-                <select id="toolUsage" name="toolUsage">
-                    <option value="Diesel">Diesel</option>
-                    <option value="Gasoline">Gasoline</option>
-                    <option value="naturalGas">Natural Gas</option>
-                </select>
-            </div>
-
-            <h3>Explosion Details</h3>
-
-            <div class="form-group">
-                <label for="explosiveType">Explosive Type:</label>
-                <input type="text" id="explosiveType" name="explosiveType" required>
-            </div>
-
-            <div class="form-group">
-                <label for="emissionFactor">Emission Factor:</label>
-                <input type="number" step="any" id="emissionFactor" name="emissionFactor" required>
-            </div>
-
-            <button type="submit">Register</button>
+            <button type="submit">Next</button>
         </form>
 
         {% if error_message %}

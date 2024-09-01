@@ -70,9 +70,21 @@
             text-align: center;
             margin-top: 10px;
         }
+        .background {
+            position: fixed;
+            z-index: -1;
+        }
+
+        .background img{
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
     </style>
 </head>
 <body>
+    <div class="background">
+        <img src="{% static 'img/background.png' %}" alt="">
+    </div>
     <div class="login-container">
         <h2>Login</h2>
         <form method="post">

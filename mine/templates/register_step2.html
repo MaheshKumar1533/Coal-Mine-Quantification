@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Step 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .register-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #555;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        .background {
+            position: fixed;
+            z-index: -1;
+        }
+
+        .background img{
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+    </style>
+</head>
+<body>
+    <div class="background">
+        <img src="{% static 'img/background.png' %}" alt="">
+    </div>
+    <div class="register-container">
+        <h2>Register - Step 2</h2>
+        <form method="post">
+            {% csrf_token %}
+            <h3>Mine Details</h3>
+
+            <div class="form-group">
+                <label for="coal_type">Coal Type:</label>
+                <select id="coal_type" name="coal_type">
+                    <option value="UnderGround">UnderGround</option>
+                    <option value="OpenCast">OpenCast</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="area">Area (sq km):</label>
+                <input type="number" step="any" id="area" name="area" required>
+            </div>
+
+            <div class="form-group">
+                <label for="green_area">Green Area (sq km):</label>
+                <input type="number" step="any" id="green_area" name="green_area" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mine_area">Mine Area (sq km):</label>
+                <input type="number" step="any" id="mine_area" name="mine_area" required>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="bare_land" name="bare_land"> Bare Land</label>
+            </div>
+
+            <h3>Fuel Type</h3>
+
+            <div class="form-group">
+                <label for="transport">Transport Fuel:</label>
+                <select id="transport" name="transport">
+                    <option value="Diesel">Diesel</option>
+                    <option value="Gasoline">Gasoline</option>
+                    <option value="naturalGas">Natural Gas</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="toolUsage">Tool Usage Fuel:</label>
+                <select id="toolUsage" name="toolUsage">
+                    <option value="Diesel">Diesel</option>
+                    <option value="Gasoline">Gasoline</option>
+                    <option value="naturalGas">Natural Gas</option>
+                </select>
+            </div>
+
+            <h3>Explosion Details</h3>
+
+            <div class="form-group">
+                <label for="explosiveType">Explosive Type:</label>
+                <input type="text" id="explosiveType" name="explosiveType" required>
+            </div>
+
+            <div class="form-group">
+                <label for="emissionFactor">Emission Factor:</label>
+                <input type="number" step="any" id="emissionFactor" name="emissionFactor" required>
+            </div>
+            <h3>Mine Address</h3>
+
+            <div class="form-group">
+                <label for="street_address">Street Address:</label>
+                <input type="text" id="street_address" name="street_address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+
+            <div class="form-group">
+                <label for="zip_code">ZIP Code:</label>
+                <input type="number" id="zip_code" name="zip_code" required>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country" value="India" required>
+            </div>
+
+            <div class="form-group">
+                <label for="latitude_address">Latitude (Address):</label>
+                <input type="number" step="any" id="latitude_address" name="latitude_address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="longitude_address">Longitude (Address):</label>
+                <input type="number" step="any" id="longitude_address" name="longitude_address" required>
+            </div>
+
+            <button type="submit">Complete Registration</button>
+        </form>
+    </div>
+</body>
+</html>
