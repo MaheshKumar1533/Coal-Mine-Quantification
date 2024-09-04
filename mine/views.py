@@ -214,7 +214,7 @@ def profile(request):
     return render(request, 'profile.html', {'user': user})
 
 def admindash(request):
-    mines = mineDetail.objects.exclude(id=1)
+    mines = mineDetail.objects.exclude(username = "ministryofcoal")
     details = []
     for mine in mines:
         address = mineaddress.objects.get(username=mine).state
