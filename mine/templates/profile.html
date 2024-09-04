@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,9 +89,26 @@
         button:hover {
             background-color: #0056b3;
         }
+        .background {
+			    position: fixed;
+                bottom: 0;
+                width: 100vw;
+                height: 100vh;
+			    z-index: -1;
+			}
+
+			.background img{
+                filter: contrast(0.5);
+                height: 100%;
+                width: 100%;
+			    object-fit: cover;
+                object-position: center;
+            }
     </style>
 </head>
-<body>
+<body><div class="background">
+    <img src="{% static 'img/background.png' %}" alt="" />
+</div>
     <div class="profile-container">
         <h2>User Profile</h2>
         <a href="{% url 'customLogout' %}"><button>Logout</button></a>

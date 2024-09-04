@@ -11,7 +11,12 @@ def calculator(request):
 
 @login_required
 def livedash(request):
-    return render(request, 'dashboard.html')
+
+    emission  = emissions.objects.get(mine=request.user)
+    print(emission)
+    return render(request, 'dashboard.html', {
+        'emissions': emission,
+    })
 
 def customLogin(request):
     if request.method == 'POST':
@@ -51,6 +56,8 @@ def register(request):
                     first_name=firstname
                 )
                 user.save()
+                emission = emission.objects.create(mine=user)
+                emission.save()
 
                 # Store the user's ID in the session and proceed to the next step
                 request.session['user_id'] = user.id
@@ -206,24 +213,26 @@ def profile(request):
         'explosion_record': explosion_record,
         'address': address
     }
-
     return render(request, 'profile.html', context)
-
-def profile(request):
-    user = request.user
-    return render(request, 'profile.html', {'user': user})
 
 def admindash(request):
     mines = mineDetail.objects.exclude(username = "ministryofcoal")
     details = []
+    total_emissions = 0
     for mine in mines:
         address = mineaddress.objects.get(username=mine).state
         emission = emissions.objects.get(mine=mine).total_emissions
+        total_emissions += emission
 
         details.append({
             "name": mine.first_name,
             "state": address,
+            "type": mine.coal_type,
             "emission": emission,
-            "area": mine.area
+            "area": mine.area,
         })
-    return render(request, 'admindash.html',{"details": details})
+    return render(request, 'admindash.html',{
+        "mine_count": len(mines),
+        "total_emissions": total_emissions,
+        "details": details
+    })

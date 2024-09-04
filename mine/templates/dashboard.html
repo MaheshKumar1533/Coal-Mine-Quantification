@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <title>Coal Mine Carbon Footprint Dashboard</title>
-    {% comment %} <link rel="stylesheet" href=""> {% endcomment %}
+    {% comment %}
+    <link rel="stylesheet" href=""> {% endcomment %}
     <style>
         /* Add your CSS styles */
         body {
@@ -19,6 +20,7 @@
             margin: 0;
             padding: 0;
         }
+
         .navbar {
             background-color: #D6B8A1;
             padding: 15px 0;
@@ -26,7 +28,7 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .navbar .centered-menu {
             list-style: none;
             margin: 0;
@@ -35,17 +37,17 @@
             justify-content: center;
             flex: 1;
         }
-        
+
         .navbar .centered-menu li {
             margin: 0 20px;
         }
-        
+
         .navbar .centered-menu li a {
             text-decoration: none;
             color: #333;
             font-weight: bold;
         }
-        
+
         .navbar .user-info {
             display: flex;
             padding-right: 1%;
@@ -53,7 +55,7 @@
             align-items: center;
             list-style-type: none;
         }
-        
+
         .container {
             width: 90%;
             max-width: 1200px;
@@ -228,31 +230,32 @@
 </head>
 
 <body>
-    
-<!-- Navigation Bar -->
-<nav class="navbar">
-    <ul class="centered-menu">
-        <li><a href="{% url 'index' %}">Home</a></li>
-        <li><a href="{% url 'initiatives' %}">Insights</a></li>
-        <li><a href="#about">About</a></li>
-    </ul>
-    <ul class="user-info">
-        <li>{{ request.user.firstname }}</li>
-        <li>
-            <a href="{% url 'customLogout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
-        </li>
-    </ul>
-</nav>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul class="centered-menu">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'initiatives' %}">Insights</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <ul class="user-info">
+            <li>{{ request.user.firstname }}</li>
+            <li>
+                <a href="{% url 'customLogout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
+            </li>
+        </ul>
+    </nav>
 
     <!-- Main Content -->
     <div class="container">
         <!-- Top Cards -->
         <div class="card-row">
-            <div class="card">Total Emission<br><span id="totalEmissions">172</span> kg CO2</div>
-            <div class="card">Extraction<br>55 kg CO2</div>
-            <div class="card">Transportation<br>49 kg CO2</div>
-            <div class="card">Processing<br>44 kg CO2</div>
-            <div class="card">Equipment<br>24 kg CO2</div>
+            <div class="card">Total Emission<br><span id="totalEmissions">{{ emissions.total_emissions }}</span> kg CO2
+            </div>
+            <div class="card">Extraction<br>{{ emissions.extraction_emissions }} kg CO2</div>
+            <div class="card">Transportation<br>{{ emissions.transport_emissions }} kg CO2</div>
+            <div class="card">Processing<br>{{ emissions.pros_emissions }} kg CO2</div>
+            <div class="card">Equipment<br>{{ emissions.tool_emissions }} kg CO2</div>
         </div>
 
         <!-- Charts and Emission Data -->
@@ -262,16 +265,16 @@
                 <!-- Placeholder for Pie Chart -->
                 <canvas id="myDonutChart" style="width:100%;max-width:600px"></canvas>
                 <a href="{% url 'initiatives' %}" style="text-decoration:none;">
-                <div class="carbon-footprint">
-                    <div class="carbon-info">
-                        <p>Emissions per year</p>
-                        <p id="carbonFootprint">172 kg * 365</p>
+                    <div class="carbon-footprint">
+                        <div class="carbon-info">
+                            <p>Emissions per year</p>
+                            <p id="carbonFootprint">172 kg * 365</p>
+                        </div>
+                        <div class="carbon-info">
+                            <p>Area to be planted</p>
+                            <p><strong>50 Hectors</strong></p>
+                        </div>
                     </div>
-                    <div class="carbon-info">
-                        <p>Area to be planted</p>
-                        <p><strong>50 Hectors</strong></p>
-                    </div>
-                </div>
                 </a>
             </div>
             <div class="chart-card">
@@ -347,7 +350,7 @@
             options: {
                 legend: { display: false },
                 scales: {
-                    xAxes:[{
+                    xAxes: [{
                         display: true,
                         scaleLabel: {
                             display: true,
@@ -369,7 +372,7 @@
             }
         });
         var xvalues = ["Extraction", "Transportation", "Processing", "Combustion"];
-        var yvalues = [55, 49, 44, 24];
+        var yvalues = [ {{ emissions.extraction_emissions }}, {{ emissions.transport_emissions }} , {{ emissions.pros_emissions }}, {{ emissions.tool_emissions }}  ];
         var barColors = [
             "#b91d47",
             "#00aba9",
