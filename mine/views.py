@@ -215,13 +215,17 @@ def profile(request):
 
 def admindash(request):
     mines = mineDetail.objects.exclude(id=1)
+    print(mines.values())
+    print(mineaddress.objects.all().values())
     details = []
     for mine in mines:
         address = mineaddress.objects.get(username=mine).state
         emission = emissions.objects.get(mine=mine).total_emissions
+
         details.append({
             "name": mine.first_name,
             "state": address,
-            "emission": emission
+            "emission": emission,
+            "area": mine.area
         })
     return render(request, 'admindash.html',{"details": details})
